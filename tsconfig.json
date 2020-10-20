@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+      "target": "es5",
+      "baseUrl": ".",
+      "strict": true
+    },
+    "include": [
+      "src"
+    ],
+    "typeRoots": [
+      "./src/typings",
+      "node_modules/@types",
+      "./src/typings/custom.d.ts",
+      "nod_modules/"
+    ]
+  }
+  
