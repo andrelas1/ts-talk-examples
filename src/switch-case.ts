@@ -18,7 +18,9 @@ export function myApp() {
     payload: "bar",
   };
 
-  function reducer(action) {
+  type MyActions = typeof firstAction | typeof secondAction
+
+  function reducer(action: MyActions) {
     switch (action.type) {
       case "first":
         return {

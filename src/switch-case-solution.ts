@@ -18,18 +18,6 @@ export function myApp() {
     payload: string;
   };
 
-  const firstAction = {
-    type: "first",
-    payload: {
-      data: [1, 2, 3, 4],
-    },
-  };
-
-  const secondAction = {
-    type: "second",
-    payload: "bar",
-  };
-
   type MyActions = FirstAction | SecondAction;
 
   function reducer(action: MyActions) {
