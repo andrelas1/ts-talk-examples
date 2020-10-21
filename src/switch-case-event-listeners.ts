@@ -1,48 +1,26 @@
+// UNION TYPES AND SWITCH CASE
 interface MyKeyboardEventListener {
-  type: "mousemove";
-  listener: (evt: KeyboardEvent) => {};
+  type: "keydown";
+  action: (key: string) => void;
 }
-
 
 interface MyMouseEventListener {
-  type: "keydown";
-  listener: (evt: MouseEvent) => {};
+  type: "mousemove";
+  action: (posX: number, posY: number) => void;
 }
 
-type MyListeners = MyKeyboardEventListener | MyMouseEventListener;
+type MyListener = MyKeyboardEventListener | MyMouseEventListener;
 
-const character = {
-  move: (posX: number, posY: number) => {
-    // move
-  },
-  shoot: () => {
-    // shoot
-  },
-  defend: () => {
-    // defend
-  }
-}
-
-
-function registerEventListener(myListeners: MyListeners) {
-  switch(myListeners.type) {
+function registerEventListener(myListener: MyListener) {
+  switch (myListener.type) {
     case "mousemove":
-      document.addEventListener(myListeners.type, (event: MouseEvent) => {
-        character.move(event.movementX, event.movementY);
-      })
+      document.addEventListener("mousemove", (event: MouseEvent) => {
+        myListener.action(event.movementX, event.movementY)
+      });
       break;
-    case "keydown": 
-      document.addEventListener(myListeners.type, (event: KeyboardEvent) => {
-        switch(event.key) {
-          case "f":
-            character.shoot();
-            break;
-          case "j":
-            character.defend();
-            break
-          default:
-            console.log('no action')
-        }
-      })
+    case "keydown":
+      document.addEventListener(myListener.type, (event: KeyboardEvent) => {
+        myListener.action(event.key);
+      });
   }
 }

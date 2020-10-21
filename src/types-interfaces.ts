@@ -1,23 +1,30 @@
-type A = { n: number };
+// TYPE ALIASES
+type Car = { name: string };
 
-type B = A & { id: string }
+type FormulaOneCar = Car & { drs: boolean }
 
-const b: B = {
-    n: 10,
-    id: ''
+const ferrari: FormulaOneCar = {
+    name: 'ferrari',
+    drs: false
 }
 
-interface Aa {
-    n: number 
+// INTERFACES
+interface Animal {
+    name: string 
 }
 
-interface Aa {
-    id: string;
+interface Fish extends Animal {
+    swim: () => void
 }
 
-// declaration merging
+// interface merging 
+interface Fish {
+    color: string
+}
 
-const c: Aa = {
-    n: 10,
-    id: ''
+
+const c: Fish = {
+    name: 'nemo',
+    swim: () => {},
+    color: 'blue'
 }
